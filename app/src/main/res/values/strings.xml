@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">alive</string>
+    <string name="content">主要目的是监听手机的开屏锁屏广播，在锁屏的时候在前台开启一个1像素的透明Activity，在开屏的时候关闭Activity，来达到提升App的进程等级</string>
+</resources>
