@@ -1,7 +1,7 @@
 # 目录
-[ 我的学习手册 - 热更新了解了一下下 ](https://www.jianshu.com/p/a994c5d08767)
-[ 我的学习手册 - Glide了解了一下下 ](https://www.jianshu.com/p/810490b1ccee)
-[ 我的学习手册 - 进程保活了解了一下下 ](https://www.jianshu.com/p/e3d731314abc)
+[ 我的学习手册 - 热更新了解了一下下 ](https://www.jianshu.com/p/a994c5d08767)  
+[ 我的学习手册 - Glide了解了一下下 ](https://www.jianshu.com/p/810490b1ccee)    
+[ 我的学习手册 - 进程保活了解了一下下 ](https://www.jianshu.com/p/e3d731314abc) 
 
 # 进程保活
 ##### 进程被干掉的原因
