@@ -3,6 +3,7 @@ package com.memo.alive
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.memo.alive.keep.KeepAliveManager
 import com.memo.alive.notification.ForegroundService
 import com.memo.alive.service.LocalService
 import com.memo.alive.service.RemoteService
@@ -19,14 +20,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //方案一：保活 开启一个前台1x1的Activity
+        //方案一：保活 开启一个前台1x1的Activity 有一些手机如果息屏会强制关闭
         //注册开息屏接收
         //KeepAliveManager.registerKeepAlive(this)
 
         //方案二：保活 开启一个前台服务
         //startService(foregroundService)
 
-        //方案三：拉活 双进程守护
+        //方案三：拉活 双进程守护 Android 8.0会一直显示Alie is running
         startService(localService)
         startService(remoteService)
 
