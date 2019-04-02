@@ -142,14 +142,13 @@ object KeepAliveManager {
 在安卓7.0上通过创建两个相同id的服务，然后关闭其中一个来达到欺骗手机当前id的服务已经被关闭，使手机通知栏不提示当前App开启了一个前台服务
 ```
 open class ForegroundService : Service() {
-
-    private val SERVICE_ID: Int = 1
-
-    override fun onBind(intent: Intent?): IBinder?{
-        return LocalBinder()
+    companion object {
+        val SERVICE_ID: Int = 1
     }
 
-    private class LocalBinder: Binder()
+    override fun onBind(intent: Intent?): IBinder? = LocalBinder()
+
+    private class LocalBinder : Binder()
 
     /**
      * 开启Service
@@ -164,7 +163,7 @@ open class ForegroundService : Service() {
             startForeground(SERVICE_ID, Notification())
             //由于Android 7.0之后开启前台服务会在通知栏提示App在前台服务
             //消除前台服务的提示
-            startService(Intent(this,InnerService::class.java))
+            startService(Intent(this, InnerService::class.java))
         } else {
             //7.0之后
             val manager: NotificationManager? = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
@@ -180,19 +179,19 @@ open class ForegroundService : Service() {
     /**
      * 子Service
      */
-    inner class InnerService : Service() {
-        override fun onBind(intent: Intent?): IBinder? = null
+    class InnerService : Service() {
+
+        override fun onBind(intent: Intent?): IBinder? = LocalBinder()
 
         override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
             // 开启一个新的服务
-            startForeground(SERVICE_ID, Notification())
             // 关闭服务和提示
             // 由于使用的是同一个ServiceId 所以就不会有提示了 但是停止的是这个内部服务
+            startForeground(SERVICE_ID, Notification())
             stopForeground(true)
             stopSelf()
             return super.onStartCommand(intent, flags, startId)
         }
-
     }
 }
 ```
